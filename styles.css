@@ -1,0 +1,82 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    background-color: rgb(56, 119, 128);
+    text-align: center;
+}
+
+h1{
+    color: black;
+    font-size: 9vmin;
+    
+}
+
+.container{
+    height: 70vh;
+    display: flex;
+    
+    justify-content: center;
+    align-items: center;
+}
+
+.game{
+    height: 60vmin;
+    width: 60vmin;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5vmin;
+    
+}
+
+.box{
+     height: 18vmin;
+     width: 18vmin;
+     border-radius: 1rem;
+     box-shadow: 0 0 1rem black;
+     font-size: 8vmin;
+     background-color: bisque;
+     color:rgb(119, 51, 68);
+}
+
+#reset-Btn{
+    height: 7vmin;
+    width: 20vmin;
+    background-color: rgb(245, 199, 81);
+    font-size: medium;
+    color:black;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    border-radius: 1vmin;
+}
+
+#new-Btn{
+    height: 7vmin;
+    width: 20vmin;
+    background-color: rgb(245, 199, 81);
+    font-size: medium;
+    color:black;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    border-radius: 1vmin;
+}
+
+.msg-container{
+    height: 100vmin;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 4rem;
+}
+
+#msg{
+    color:bisque;
+    font-size: 7vmin;
+}
+
+.hide{
+    display: none;
+}
