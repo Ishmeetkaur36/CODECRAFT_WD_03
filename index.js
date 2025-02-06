@@ -1,6 +1,7 @@
 let boxes = document.querySelectorAll(".box");
 let resetBtn = document.querySelector("#reset-Btn");
 let newGameBtn = document.querySelector("#new-Btn");
+let playAiBtn = document.querySelector("#play-ai-Btn");
 let mesgContainer = document.querySelector(".msg-container");
 let mesg = document.querySelector("#msg");
 
@@ -25,28 +26,27 @@ const resetGame = () =>{
     mesgContainer.classList.add("hide");
 }; 
 
-boxes.forEach((box) =>{
-    box.addEventListener("click" , () => {
-        if(turnO){
-            box.innerText="O";
-            turnO = false;
-            count++;
-        }
-        else{
-            box.innerText="X";
-            turnO = true;
-            count++;
-        }
-        box.disabled = true;
 
-        let isWinner = checkWinner();
+boxes.forEach((box) => {
+    box.addEventListener("click", () => {
+        if (box.innerText === "") {
+            box.innerText = turnO ? "O" : "X";
+            box.disabled = true;
+            count++;
+            if (checkWinner()) return;
+            turnO = !turnO;
+            if (playWithAI && !turnO) {
+                setTimeout(aiMove, 500);
+            }
+            let isWinner = checkWinner();
 
-        if(count === 9 && !isWinner){
-            drawGame();
+            if(count === 9 && !isWinner){
+           drawGame();
+       }
         }
     });
-
 });
+
 
 const disableBoxes = () => {
     boxes.forEach((box) =>{
@@ -88,7 +88,21 @@ const drawGame = () => {
     disableBoxes();
 };
 
+const aiMove = () => {
+    let emptyBoxes = [...boxes].filter(box => box.innerText === "");
+    if (emptyBoxes.length === 0) return;
+    let randomBox = emptyBoxes[Math.floor(Math.random() * emptyBoxes.length)];
+    randomBox.innerText = "X";
+    randomBox.disabled = true;
+    count++;
+    if (checkWinner()) return;
+    turnO = true;
+};
 
 
+playAiBtn.addEventListener("click", () => { 
+    playWithAI = true; resetGame(); 
+
+});
 newGameBtn.addEventListener("click" , resetGame);
 resetBtn.addEventListener("click" , resetGame);
